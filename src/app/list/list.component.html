@@ -1,0 +1,15 @@
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Quantidade</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of clinicas">
+
+            <td>{{item.nome}}</td>
+            <td>{{item.qtd}}</td>
+        </tr>
+    </tbody>
+</table>
