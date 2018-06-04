@@ -3,13 +3,17 @@
         <tr>
             <td>Nome</td>
             <td>Quantidade</td>
+            <td>Deletar</td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of clinicas">
+        <tr *ngFor="let item of listaClinicas.clinicas; let i = index">
 
             <td>{{item.nome}}</td>
             <td>{{item.qtd}}</td>
+            <td>
+                <button class="btn btn-danger" (click)='deletar(i)'>Deletar</button>
+            </td>
         </tr>
     </tbody>
 </table>

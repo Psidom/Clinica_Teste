@@ -8,23 +8,23 @@ import { Component, OnInit, NgModule, Input } from '@angular/core';
   styleUrls: ["./save.component.css"]
 })
 export class SaveComponent implements OnInit {
-  clinicas: Array<Clinica>;
+  //clinicas: Array<Clinica>;
 
   minha: Clinica = {
-    nome: " ",
+    nome: "",
     qtd: 0
   };
 
   add() {
     let rede = Object.assign({}, this.minha);
-    this.clinicas.push(rede);
-    localStorage.setItem("Clinicas", JSON.stringify(this.clinicas));
+    this.listaClinicas.clinicas.push(rede);
+    localStorage.setItem("Clinicas", JSON.stringify(this.listaClinicas.clinicas));
   }
+
   //recebe uma instancia do Serviço de Clinicas que fica na memoria e copia o Array para uma Variavel Local
   constructor(private listaClinicas: ClinicasService) {
-    this.clinicas = this.listaClinicas.clinicas;
+    //this.clinicas = this.listaClinicas.clinicas;
   }
 
   ngOnInit() {}
-
 }
