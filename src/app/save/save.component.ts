@@ -10,8 +10,9 @@ import { Component, OnInit, NgModule, Input } from '@angular/core';
 export class SaveComponent implements OnInit {
 
   minha: Clinica = {
-    nome: "",
-    qtd: 0
+    title: '',
+    start: '',
+    end: ''
   };
 
   add() {

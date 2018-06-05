@@ -1,4 +1,5 @@
 export class Clinica {
- nome: string;
- qtd: number;
+ title: string;
+ start: string;
+ end: string;
 }
