@@ -8,7 +8,6 @@ import { Component, OnInit, NgModule, Input } from '@angular/core';
   styleUrls: ["./save.component.css"]
 })
 export class SaveComponent implements OnInit {
-  //clinicas: Array<Clinica>;
 
   minha: Clinica = {
     nome: "",
@@ -23,7 +22,7 @@ export class SaveComponent implements OnInit {
 
   //recebe uma instancia do Serviço de Clinicas que fica na memoria e copia o Array para uma Variavel Local
   constructor(private listaClinicas: ClinicasService) {
-    //this.clinicas = this.listaClinicas.clinicas;
+
   }
 
   ngOnInit() {}

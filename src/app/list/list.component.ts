@@ -1,7 +1,9 @@
 import { Clinica } from './../Clinica';
 import { ClinicasService } from './../clinicas.service';
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
+import 'fullcalendar';
+//declare var $: any;
 @Component({
   selector: "app-list",
   templateUrl: "./list.component.html",
@@ -17,6 +19,7 @@ export class ListComponent implements OnInit {
       return this.listaClinicas.clinicas;
     }
   }
+
   deletar(id){
     if (confirm('Você Realmente deseja deletar esse Serviço?')){
       if (id === 0) {
@@ -36,8 +39,28 @@ export class ListComponent implements OnInit {
   constructor(private listaClinicas: ClinicasService) {
     this.listaClinicas.clinicas.push({ nome: "exemplo", qtd: 1 });
     this.rec();
-    //this.listaClinicas.consultarClinica('22E37A2D-C3EB-42C7-B4C3-1A09B78D2DC0'); //<- esse metodo pode ser usado para consultar a clinica.
+    //sthis.listaClinicas.consultarClinica('22E37A2D-C3EB-42C7-B4C3-1A09B78D2DC0'); //<- esse metodo pode ser usado para consultar a clinica.
   }
   //Carrega os elementos quando o DOM é Carregado
-  ngOnInit() {}
+  ngOnInit() {
+    const agenda = new Document();
+    $(agenda).ready(function () {
+      $('#agenda').fullCalendar({
+        locale: 'pt-br',
+        dayClick: function() {
+          confirm('Quer realmente esse dia');
+        },
+        navLinks: true,
+        navLinkDayClick: function (date, jsEvent) {
+          console.log('day', date.format()); // date is a moment
+          console.log('coords', jsEvent.pageX, jsEvent.pageY);
+        },
+        isRTL: true
+      });
+
+    });
+
+  }
+
+
 }

@@ -13,7 +13,7 @@ export class ClinicasService {
   consultarClinica(inst_id: string) {
     this.http
       .get(
-        `https://apps.saudevianet.com.br/api/instituicao/carregarDadosPublicosInstituicao?inst_id=${inst_id}`
+        `https://apps.saudevianet.com.br:88/api/instituicao/carregarDadosPublicosInstituicao?inst_id=${inst_id}`
       )
       .toPromise()
       .then(response => {
