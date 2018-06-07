@@ -72,6 +72,7 @@ export class ListComponent implements OnInit {
           day: 'Dia',
           list: 'Lista'
         },
+        unselectAuto: true,
         events: JSON.parse(localStorage.getItem("Clinicas")),
         selectable: true,
         selectHelper: true,
@@ -96,10 +97,9 @@ export class ListComponent implements OnInit {
             $("#agenda").fullCalendar('renderEvent', dados, true);
             alert('Compromisso realizado com Sucesso');
             }
-        }
+          }
 
-
-        }
+        },
       });
     });
     this.listaClinicas.clinicas = lista;
