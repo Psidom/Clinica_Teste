@@ -60,9 +60,6 @@ export class ListComponent implements OnInit {
     $(agenda).ready(function() {
       $("#agenda").fullCalendar({
         locale: "pt-br",
-        dayClick: function() {
-          confirm("Quer realmente esse dia");
-        },
         header: {
           left: "prev,today,next",
           center: "title",
@@ -79,23 +76,29 @@ export class ListComponent implements OnInit {
         selectable: true,
         selectHelper: true,
         select: function(start, end) {
-          const inicio = moment(start).format("YYYY-MM-DD HH:mm");
-          const fim = moment(end).format("YYYY-MM-DD HH:mm");
-          const nome = prompt("Digite um Nome Para Sua Consulta");
-          const dados: Clinica = {
-            title: nome,
-            start: inicio,
-            end: fim
-          };
-          let rede = Object.assign({}, dados);
-          lista.push(rede);
-          localStorage.setItem(
-            "Clinicas",
-            JSON.stringify(lista)
-          );
+          if (confirm('Você quer realmente esse dia')) {
+            const inicio = moment(start).format("YYYY-MM-DD HH:mm");
+            const fim = moment(end).format("YYYY-MM-DD HH:mm");
+            const nome = prompt("Digite um Nome Para Sua Consulta");
+            const dados: Clinica = {
+              title: nome,
+              start: inicio,
+              end: fim
+            };
+            if(nome){
+            let rede = Object.assign({}, dados);
+            lista.push(rede);
+            localStorage.setItem(
+              "Clinicas",
+              JSON.stringify(lista)
+            );
 
-          $("#agenda").fullCalendar('renderEvent', dados, true);
-          alert('Compromisso realizado com Sucesso');
+            $("#agenda").fullCalendar('renderEvent', dados, true);
+            alert('Compromisso realizado com Sucesso');
+            }
+        }
+
+
         }
       });
     });
